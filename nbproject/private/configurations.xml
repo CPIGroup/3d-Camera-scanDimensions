@@ -15,8 +15,6 @@
         </df>
         <df name="pclBox.dir">
         </df>
-        <df name="Progress">
-        </df>
       </df>
       <in>pclBox.cpp</in>
     </df>
