@@ -14,6 +14,8 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/filters/statistical_outlier_removal.h>
+#include <pcl/surface/mls.h>
+#include <math.h>
 
 
 // constants
@@ -46,6 +48,8 @@ private:
 
     // action flag
     int action = 0;
+    
+    float lastd[3];
 
     /**
      * Remove points not in working area
@@ -287,7 +291,7 @@ private:
                 c++;
             }
         }
-        std::cout << "Found: " << c << " corners." << std::endl;
+        //std::cout << "Found: " << c << " corners." << std::endl;
 
         return box;
     }
@@ -305,13 +309,34 @@ private:
         }
 
         if (cloud->points.size() > MINOBJECTSIZE) {
-            std::cout << "Object size: " << cloud->points.size() << " data points." << std::endl;
+            //std::cout << "Object size: " << cloud->points.size() << " data points." << std::endl;
 
             box = get_corners(cloud);
         }
 
         drawBox(raw_cloud, box);
         return box;
+    }
+    
+    void showBoxSize(xyzBox box) {
+        
+        float d[8];
+        
+        for (int i=1; i<8; i++) {
+            d[i-1] = getdistance(box.a[0], box.a[i]);
+            d[i-1] = round(d[i-1] * 39.37);
+            //std::cout << d[i-1] << std::endl;
+        }
+        
+        std::sort(d, d + 7, std::less<float>());
+        
+        if (lastd[0] == d[0] && lastd[1] == d[1] && lastd[2] == d[2] && d[0] != 0 && d[1] != 0 && d[2] != 0 ) {
+            std::cout << d[0] << " x " << d[1] << " x " << d[2] << std::endl;
+        }
+        
+        lastd[0] = d[0];
+        lastd[1] = d[1];
+        lastd[2] = d[2];
     }
 
 public:
@@ -398,6 +423,8 @@ public:
                     getCloserObject(filtered_cloud, object_cloud);
                     box = buildBox(object_cloud);
 
+                    showBoxSize(box);
+                    
                     convertToRGB(object_cloud, rgb_object_cloud, static_cast<float> ((0 << 16) | (255 << 8) | 255));
                     *rgb_cloud += *rgb_object_cloud;
 

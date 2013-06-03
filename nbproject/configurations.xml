@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="88">
+<configurationDescriptor version="89">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="lib" displayName="lib" projectFiles="true" root="/usr/lib">
       <logicalFolder name="gcc" displayName="gcc" projectFiles="true">
@@ -28,7 +28,7 @@
       </logicalFolder>
       <itemPath>/usr/lib/libvtkCommon.so.5.8.0</itemPath>
     </logicalFolder>
-    <df root="." name="pclBox">
+    <df root="." name="0">
       <in>pclBox.cpp</in>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -60,82 +60,45 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>pclBox</executablePath>
+          <ccTool>
+            <standard>8</standard>
+            <incDir>
+              <pElem>/usr/include/vtk-5.8</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>EIGEN_USE_NEW_STDVECTOR</Elem>
+              <Elem>EIGEN_YES_I_KNOW_SPARSE_MODULE_IS_NOT_STABLE_YET</Elem>
+              <Elem>FLANN_STATIC</Elem>
+              <Elem>qh_QHpointer</Elem>
+            </preprocessorList>
+          </ccTool>
         </makeTool>
       </makefileType>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include-fixed/limits.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="/usr/lib/libvtkCommon.so.5.8.0" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
       </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include-fixed/syslimits.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/emmintrin.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/float.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/mm_malloc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/mmintrin.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdarg.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/gcc/x86_64-linux-gnu/4.7/include/xmmintrin.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/usr/lib/libvtkCommon.so.5.8.0" ex="false" tool="1" flavor2="0">
-      </item>
-      <folder path="lib">
+      <folder path="0">
         <ccTool>
           <incDir>
-            <pElem>.</pElem>
+            <pElem>/usr/local/include/pcl-1.7</pElem>
+            <pElem>/usr/include/eigen3</pElem>
+            <pElem>/usr/include/pcl-1.6</pElem>
+            <pElem>/usr/include/openni</pElem>
+            <pElem>/usr/include/qhull</pElem>
+            <pElem>/usr/include/ni</pElem>
           </incDir>
         </ccTool>
       </folder>
-      <folder path="pclBox">
+      <folder path="lib">
         <ccTool>
           <incDir>
-            <pElem>/usr/include/vtk-5.8</pElem>
             <pElem>/usr/include/pcl-1.6</pElem>
             <pElem>/usr/include/eigen3</pElem>
             <pElem>/usr/include/openni</pElem>
             <pElem>/usr/include/qhull</pElem>
+            <pElem>.</pElem>
           </incDir>
-          <preprocessorList>
-            <Elem>EIGEN_USE_NEW_STDVECTOR</Elem>
-            <Elem>EIGEN_YES_I_KNOW_SPARSE_MODULE_IS_NOT_STABLE_YET</Elem>
-            <Elem>FLANN_STATIC</Elem>
-            <Elem>qh_QHpointer</Elem>
-          </preprocessorList>
         </ccTool>
       </folder>
       <item path="pclBox.cpp" ex="false" tool="1" flavor2="0">
