@@ -27,10 +27,12 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/vtk-5.8"
-  "/usr/include/pcl-1.6"
+  "/usr/local/include/pcl-1.7"
   "/usr/include/eigen3"
+  "/usr/include/pcl-1.6"
   "/usr/include/openni"
   "/usr/include/qhull"
+  "/usr/include/ni"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
