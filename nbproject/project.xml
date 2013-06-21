@@ -11,6 +11,9 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>../Pcl/OpenNI-Linux-x64-2.2/Include</sourceRootElem>
+                <sourceRootElem>/usr/local/include/pcl-1.7</sourceRootElem>
+                <sourceRootElem>../Pcl/pcl-trunk/build/include/pcl</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

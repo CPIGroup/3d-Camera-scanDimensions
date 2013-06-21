@@ -42,6 +42,9 @@
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
     <Elem>.</Elem>
+    <Elem>../Pcl/OpenNI-Linux-x64-2.2/Include</Elem>
+    <Elem>/usr/local/include/pcl-1.7</Elem>
+    <Elem>../Pcl/pcl-trunk/build/include/pcl</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -83,10 +86,8 @@
           <incDir>
             <pElem>/usr/local/include/pcl-1.7</pElem>
             <pElem>/usr/include/eigen3</pElem>
-            <pElem>/usr/include/pcl-1.6</pElem>
-            <pElem>/usr/include/openni</pElem>
-            <pElem>/usr/include/qhull</pElem>
             <pElem>/usr/include/ni</pElem>
+            <pElem>/usr/include/qhull</pElem>
           </incDir>
         </ccTool>
       </folder>

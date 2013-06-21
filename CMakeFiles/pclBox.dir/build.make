@@ -34,6 +34,9 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /var/www/pclBox
 
@@ -53,15 +56,15 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o: CMakeFiles/pclBox.dir/flags.make
 CMakeFiles/pclBox.dir/pclBox.cpp.o: pclBox.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /var/www/pclBox/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/pclBox.dir/pclBox.cpp.o"
-	/usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/pclBox.dir/pclBox.cpp.o -c /var/www/pclBox/pclBox.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/pclBox.dir/pclBox.cpp.o -c /var/www/pclBox/pclBox.cpp
 
 CMakeFiles/pclBox.dir/pclBox.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pclBox.dir/pclBox.cpp.i"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /var/www/pclBox/pclBox.cpp > CMakeFiles/pclBox.dir/pclBox.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /var/www/pclBox/pclBox.cpp > CMakeFiles/pclBox.dir/pclBox.cpp.i
 
 CMakeFiles/pclBox.dir/pclBox.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pclBox.dir/pclBox.cpp.s"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /var/www/pclBox/pclBox.cpp -o CMakeFiles/pclBox.dir/pclBox.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /var/www/pclBox/pclBox.cpp -o CMakeFiles/pclBox.dir/pclBox.cpp.s
 
 CMakeFiles/pclBox.dir/pclBox.cpp.o.requires:
 .PHONY : CMakeFiles/pclBox.dir/pclBox.cpp.o.requires
@@ -81,36 +84,47 @@ pclBox_EXTERNAL_OBJECTS =
 
 pclBox: CMakeFiles/pclBox.dir/pclBox.cpp.o
 pclBox: CMakeFiles/pclBox.dir/build.make
+pclBox: /usr/local/lib/libpcl_cuda_features.so
+pclBox: /usr/local/lib/libpcl_cuda_sample_consensus.so
+pclBox: /usr/local/lib/libpcl_cuda_segmentation.so
 pclBox: /usr/lib/libboost_system-mt.so
 pclBox: /usr/lib/libboost_filesystem-mt.so
 pclBox: /usr/lib/libboost_thread-mt.so
 pclBox: /usr/lib/libboost_date_time-mt.so
 pclBox: /usr/lib/libboost_iostreams-mt.so
+pclBox: /usr/lib/libboost_mpi-mt.so
 pclBox: /usr/lib/libboost_serialization-mt.so
-pclBox: /usr/lib/libpcl_common.so
+pclBox: /usr/local/lib/libpcl_common.so
 pclBox: /usr/lib/libflann_cpp_s.a
-pclBox: /usr/lib/libpcl_kdtree.so
-pclBox: /usr/lib/libpcl_octree.so
-pclBox: /usr/lib/libpcl_search.so
-pclBox: /usr/lib/libpcl_sample_consensus.so
-pclBox: /usr/lib/libpcl_filters.so
+pclBox: /usr/local/lib/libpcl_kdtree.so
+pclBox: /usr/local/lib/libpcl_octree.so
+pclBox: /usr/local/lib/libpcl_search.so
+pclBox: /usr/local/lib/libpcl_sample_consensus.so
+pclBox: /usr/local/lib/libpcl_filters.so
 pclBox: /usr/lib/libOpenNI.so
 pclBox: /usr/lib/libvtkCommon.so.5.8.0
 pclBox: /usr/lib/libvtkRendering.so.5.8.0
 pclBox: /usr/lib/libvtkHybrid.so.5.8.0
-pclBox: /usr/lib/libpcl_io.so
-pclBox: /usr/lib/libpcl_features.so
-pclBox: /usr/lib/libpcl_keypoints.so
-pclBox: /usr/lib/libpcl_visualization.so
-pclBox: /usr/local/lib/libpcl_outofcore.so
-pclBox: /usr/lib/libpcl_tracking.so
-pclBox: /usr/lib/libpcl_registration.so
+pclBox: /usr/local/lib/libpcl_io.so
+pclBox: /usr/local/lib/libpcl_features.so
+pclBox: /usr/local/lib/libpcl_keypoints.so
+pclBox: /usr/local/lib/libpcl_visualization.so
 pclBox: /usr/local/lib/libpcl_ml.so
-pclBox: /usr/lib/libpcl_segmentation.so
+pclBox: /usr/local/lib/libpcl_segmentation.so
+pclBox: /usr/local/lib/libpcl_outofcore.so
+pclBox: /usr/local/lib/libpcl_tracking.so
+pclBox: /usr/local/lib/libpcl_registration.so
 pclBox: /usr/local/lib/libpcl_recognition.so
 pclBox: /usr/lib/libqhull.so
-pclBox: /usr/lib/libpcl_surface.so
+pclBox: /usr/local/lib/libpcl_surface.so
 pclBox: /usr/local/lib/libpcl_stereo.so
+pclBox: /usr/local/lib/libpcl_gpu_containers.so
+pclBox: /usr/local/lib/libpcl_gpu_utils.so
+pclBox: /usr/local/lib/libpcl_gpu_octree.so
+pclBox: /usr/local/lib/libpcl_gpu_features.so
+pclBox: /usr/local/lib/libpcl_gpu_kinfu_large_scale.so
+pclBox: /usr/local/lib/libpcl_gpu_segmentation.so
+pclBox: /usr/local/lib/libpcl_gpu_kinfu.so
 pclBox: /usr/lib/libvtkParallel.so.5.8.0
 pclBox: /usr/lib/libvtkRendering.so.5.8.0
 pclBox: /usr/lib/libvtkGraphics.so.5.8.0
