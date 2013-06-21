@@ -29,10 +29,8 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/vtk-5.8"
   "/usr/local/include/pcl-1.7"
   "/usr/include/eigen3"
-  "/usr/include/pcl-1.6"
-  "/usr/include/openni"
-  "/usr/include/qhull"
   "/usr/include/ni"
+  "/usr/include/qhull"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

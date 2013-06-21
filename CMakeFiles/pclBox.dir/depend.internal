@@ -477,6 +477,7 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o
  /usr/local/include/pcl-1.7/pcl/common/concatenate.h
  /usr/local/include/pcl-1.7/pcl/common/distances.h
  /usr/local/include/pcl-1.7/pcl/common/eigen.h
+ /usr/local/include/pcl-1.7/pcl/common/geometry.h
  /usr/local/include/pcl-1.7/pcl/common/impl/centroid.hpp
  /usr/local/include/pcl-1.7/pcl/common/impl/common.hpp
  /usr/local/include/pcl-1.7/pcl/common/impl/eigen.hpp
@@ -502,8 +503,10 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o
  /usr/local/include/pcl-1.7/pcl/filters/impl/extract_indices.hpp
  /usr/local/include/pcl-1.7/pcl/filters/impl/filter.hpp
  /usr/local/include/pcl-1.7/pcl/filters/impl/filter_indices.hpp
+ /usr/local/include/pcl-1.7/pcl/filters/impl/project_inliers.hpp
  /usr/local/include/pcl-1.7/pcl/filters/impl/statistical_outlier_removal.hpp
  /usr/local/include/pcl-1.7/pcl/filters/impl/voxel_grid.hpp
+ /usr/local/include/pcl-1.7/pcl/filters/project_inliers.h
  /usr/local/include/pcl-1.7/pcl/filters/statistical_outlier_removal.h
  /usr/local/include/pcl-1.7/pcl/filters/voxel_grid.h
  /usr/local/include/pcl-1.7/pcl/for_each_type.h
@@ -541,7 +544,6 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o
  /usr/local/include/pcl-1.7/pcl/octree/octree_container.h
  /usr/local/include/pcl-1.7/pcl/octree/octree_iterator.h
  /usr/local/include/pcl-1.7/pcl/octree/octree_key.h
- /usr/local/include/pcl-1.7/pcl/octree/octree_node_pool.h
  /usr/local/include/pcl-1.7/pcl/octree/octree_nodes.h
  /usr/local/include/pcl-1.7/pcl/octree/octree_pointcloud.h
  /usr/local/include/pcl-1.7/pcl/octree/octree_pointcloud_changedetector.h
@@ -619,6 +621,13 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o
  /usr/local/include/pcl-1.7/pcl/segmentation/impl/extract_clusters.hpp
  /usr/local/include/pcl-1.7/pcl/segmentation/impl/sac_segmentation.hpp
  /usr/local/include/pcl-1.7/pcl/segmentation/sac_segmentation.h
+ /usr/local/include/pcl-1.7/pcl/surface/boost.h
+ /usr/local/include/pcl-1.7/pcl/surface/eigen.h
+ /usr/local/include/pcl-1.7/pcl/surface/impl/mls.hpp
+ /usr/local/include/pcl-1.7/pcl/surface/impl/processing.hpp
+ /usr/local/include/pcl-1.7/pcl/surface/mls.h
+ /usr/local/include/pcl-1.7/pcl/surface/processing.h
+ /usr/local/include/pcl-1.7/pcl/visualization/area_picking_event.h
  /usr/local/include/pcl-1.7/pcl/visualization/boost.h
  /usr/local/include/pcl-1.7/pcl/visualization/cloud_viewer.h
  /usr/local/include/pcl-1.7/pcl/visualization/common/actor_map.h

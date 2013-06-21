@@ -10,7 +10,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/pclBox/pclBox.cpp</file>
+            <file>file:/var/www/Pcl/pclBox/pclBox.cpp</file>
         </group>
     </open-files>
+    <preferences xmlns="http://www.netbeans.org/ns/auxiliary-configuration-preferences/1">
+        <module name="org-netbeans-modules-cnd-discovery">
+            <property name="rootFolder" value="/var/www/Pcl/pclBox"/>
+            <property name="exec-log-file" value="/var/www/Pcl/pclBox/pclBox"/>
+        </module>
+    </preferences>
 </project-private>

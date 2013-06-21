@@ -476,6 +476,7 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/common
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/concatenate.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/distances.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/eigen.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/geometry.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/impl/centroid.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/impl/common.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/common/impl/eigen.hpp
@@ -501,8 +502,10 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/filte
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/extract_indices.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/filter.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/filter_indices.hpp
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/project_inliers.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/statistical_outlier_removal.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/impl/voxel_grid.hpp
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/project_inliers.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/statistical_outlier_removal.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/filters/voxel_grid.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/for_each_type.h
@@ -540,7 +543,6 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_container.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_iterator.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_key.h
-CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_node_pool.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_nodes.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_pointcloud.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/octree/octree_pointcloud_changedetector.h
@@ -618,6 +620,13 @@ CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/segmentation/
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/segmentation/impl/extract_clusters.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/segmentation/impl/sac_segmentation.hpp
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/segmentation/sac_segmentation.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/boost.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/eigen.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/impl/mls.hpp
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/impl/processing.hpp
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/mls.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/surface/processing.h
+CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/visualization/area_picking_event.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/visualization/boost.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/visualization/cloud_viewer.h
 CMakeFiles/pclBox.dir/pclBox.cpp.o: /usr/local/include/pcl-1.7/pcl/visualization/common/actor_map.h
