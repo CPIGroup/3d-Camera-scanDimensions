@@ -25,7 +25,7 @@
 // constants
 
 #define LINEPOINTSTEP       0.0001
-#define MAXDISTANCE         3.2f        // set workign distance
+#define MAXDISTANCE         1.4f        // set workign distance
 
 #define BACKGROUNDCAPTURE   100
 
@@ -492,6 +492,7 @@ private:
     void subtracting (pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &out){
 
         pcl::PointCloud<pcl::PointXYZ>::Ptr workCloud (new pcl::PointCloud<pcl::PointXYZ>);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr workCloudDiff (new pcl::PointCloud<pcl::PointXYZ>);
         pcl::PointCloud<pcl::PointXYZ>::Ptr ransac_planeCloud (new pcl::PointCloud<pcl::PointXYZ>);
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr planeCloudRGB (new pcl::PointCloud<pcl::PointXYZRGB>);
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr workCloudRGB (new pcl::PointCloud<pcl::PointXYZRGB>);
@@ -533,9 +534,7 @@ private:
                     workCloud->points.push_back(ransac_planeCloud->points[*pit]);
             }        
         
-            cout << "7" << std::endl;
             std::cout << "PointCloud representing the planar component: " << workCloud->size() << " data points." << std::endl;
-            cout << "7" << std::endl;
 
             if (workCloud->size() < 1000) {
                 break;
@@ -544,6 +543,13 @@ private:
             copyCloud(workCloud, planeCloudRGB, rgb(rand() % 150 + 100, rand() % 150 + 100, rand() % 150 + 100));
             *out += *planeCloudRGB;
 
+            diffCloud(workCloud, in, workCloudDiff);
+            
+            copyCloud(workCloudDiff, in);
+            //copyCloud(workCloudDiff, planeCloudRGB, rgb(rand() % 150 + 100, rand() % 150 + 100, rand() % 150 + 100));
+            //*out += *planeCloudRGB;
+                    
+            //workCloudRGB;
 //            //
 //            boost::shared_ptr<std::vector<int> > newPointIdxVector(new std::vector<int>);
 //            pcl::octree::OctreePointCloudChangeDetector<pcl::PointXYZ> octree(0.001f);
@@ -570,7 +576,7 @@ private:
 //            copyCloud(workCloud, in);
 
             
-        } while(false);
+        } while(true);
 
         std::cout << std::endl;
         
@@ -580,88 +586,88 @@ private:
         return;        
     }
     
-    void mls (pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointNormal> &out) {
-          // Create a KD-Tree
-          pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
-
-          // Init object (second point type is for the normals, even if unused)
-          pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal> mls;
-
-          mls.setComputeNormals (true);
-
-          // Set parameters
-          mls.setInputCloud (in);
-          mls.setPolynomialFit (true);
-          mls.setSearchMethod (tree);
-          mls.setSearchRadius (0.03);
-
-          // Reconstruct
-          mls.process (out);
-    }
+//    void mls (pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointNormal> &out) {
+//          // Create a KD-Tree
+//          pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
+//
+//          // Init object (second point type is for the normals, even if unused)
+//          pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal> mls;
+//
+//          mls.setComputeNormals (true);
+//
+//          // Set parameters
+//          mls.setInputCloud (in);
+//          mls.setPolynomialFit (true);
+//          mls.setSearchMethod (tree);
+//          mls.setSearchRadius (0.03);
+//
+//          // Reconstruct
+//          mls.process (out);
+//    }
 
     // filters
 
-    void project_inliers(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
-        
-        pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients());
-        coefficients->values.resize(4);
-        coefficients->values[0] = 0;
-        coefficients->values[1] = 0;
-        coefficients->values[2] = 1.0;
-        coefficients->values[3] = 0;
+//    void project_inliers(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
+//        
+//        pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients());
+//        coefficients->values.resize(4);
+//        coefficients->values[0] = 0;
+//        coefficients->values[1] = 0;
+//        coefficients->values[2] = 1.0;
+//        coefficients->values[3] = 0;
+//
+//        // Create the filtering object
+//        pcl::ProjectInliers<pcl::PointXYZ> proj;
+//        proj.setModelType(pcl::SACMODEL_PLANE);
+//        proj.setInputCloud(in);
+//        proj.setModelCoefficients(coefficients);
+//        proj.filter(*out);
+//        
+//        return;
+//    }
 
-        // Create the filtering object
-        pcl::ProjectInliers<pcl::PointXYZ> proj;
-        proj.setModelType(pcl::SACMODEL_PLANE);
-        proj.setInputCloud(in);
-        proj.setModelCoefficients(coefficients);
-        proj.filter(*out);
-        
-        return;
-    }
-
-    void statistical_rutlier_removal(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
-        
-        pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
-        sor.setInputCloud (in);
-        sor.setMeanK (50);
-        sor.setStddevMulThresh (1.0);
-
-        //sor.setNegative (true);
-        sor.filter (*out);
-        
-        return;
-    }
+//    void statistical_rutlier_removal(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
+//        
+//        pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
+//        sor.setInputCloud (in);
+//        sor.setMeanK (50);
+//        sor.setStddevMulThresh (1.0);
+//
+//        //sor.setNegative (true);
+//        sor.filter (*out);
+//        
+//        return;
+//    }
       
-    void sample_consensus_model_plane(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
-        
-        std::vector<int> inliers;
-        pcl::SampleConsensusModelPlane<pcl::PointXYZ>::Ptr model_p (new pcl::SampleConsensusModelPlane<pcl::PointXYZ> (in));
-        
-        pcl::RandomSampleConsensus<pcl::PointXYZ> ransac (model_p);
-        ransac.setDistanceThreshold (.01);
-        ransac.computeModel();
-        ransac.getInliers(inliers);        
-        
-        pcl::copyPointCloud<pcl::PointXYZ>(*in, inliers, *out);
-        
-        return;        
-    }
+//    void sample_consensus_model_plane(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
+//        
+//        std::vector<int> inliers;
+//        pcl::SampleConsensusModelPlane<pcl::PointXYZ>::Ptr model_p (new pcl::SampleConsensusModelPlane<pcl::PointXYZ> (in));
+//        
+//        pcl::RandomSampleConsensus<pcl::PointXYZ> ransac (model_p);
+//        ransac.setDistanceThreshold (.01);
+//        ransac.computeModel();
+//        ransac.getInliers(inliers);        
+//        
+//        pcl::copyPointCloud<pcl::PointXYZ>(*in, inliers, *out);
+//        
+//        return;        
+//    }
     
-    void sample_consensus_model_sphere(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
-        
-        std::vector<int> inliers;
-        pcl::SampleConsensusModelSphere<pcl::PointXYZ>::Ptr model_s (new pcl::SampleConsensusModelSphere<pcl::PointXYZ> (in));
-        
-        pcl::RandomSampleConsensus<pcl::PointXYZ> ransac (model_s);
-        ransac.setDistanceThreshold (1.0);
-        ransac.computeModel();
-        ransac.getInliers(inliers);        
-        
-         pcl::copyPointCloud<pcl::PointXYZ>(*in, inliers, *out);
-        
-        return;        
-    }
+//    void sample_consensus_model_sphere(pcl::PointCloud<pcl::PointXYZ>::Ptr &in, pcl::PointCloud<pcl::PointXYZ>::Ptr &out) {
+//        
+//        std::vector<int> inliers;
+//        pcl::SampleConsensusModelSphere<pcl::PointXYZ>::Ptr model_s (new pcl::SampleConsensusModelSphere<pcl::PointXYZ> (in));
+//        
+//        pcl::RandomSampleConsensus<pcl::PointXYZ> ransac (model_s);
+//        ransac.setDistanceThreshold (1.0);
+//        ransac.computeModel();
+//        ransac.getInliers(inliers);        
+//        
+//         pcl::copyPointCloud<pcl::PointXYZ>(*in, inliers, *out);
+//        
+//        return;        
+//    }
     
     
 public:
@@ -692,8 +698,8 @@ public:
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_near (new pcl::PointCloud<pcl::PointXYZ>);
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_visual (new pcl::PointCloud<pcl::PointXYZRGB>);
         
-        copyCloud(raw_cloud, cloud_near);
-        //copyCloud(raw_cloud, cloud_near, MAXDISTANCE);
+        //copyCloud(raw_cloud, cloud_near);
+        copyCloud(raw_cloud, cloud_near, MAXDISTANCE);
 
         if (background_capture > 0) {
             
