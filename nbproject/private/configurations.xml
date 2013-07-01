@@ -15,8 +15,14 @@
         </df>
         <df name="pclBox.dir">
         </df>
+        <df name="Progress">
+        </df>
+        <in>tools.cpp</in>
+        <in>tools.h</in>
       </df>
       <in>pclBox.cpp</in>
+      <in>tools.cpp</in>
+      <in>tools.h</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

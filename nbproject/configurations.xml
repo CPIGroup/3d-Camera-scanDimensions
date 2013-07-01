@@ -29,7 +29,13 @@
       <itemPath>/usr/lib/libvtkCommon.so.5.8.0</itemPath>
     </logicalFolder>
     <df root="." name="0">
+      <df name="CMakeFiles">
+        <in>tools.cpp</in>
+        <in>tools.h</in>
+      </df>
       <in>pclBox.cpp</in>
+      <in>tools.cpp</in>
+      <in>tools.h</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -81,6 +87,10 @@
         <ccTool>
         </ccTool>
       </item>
+      <item path="CMakeFiles/tools.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CMakeFiles/tools.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="0">
         <ccTool>
           <incDir>
@@ -103,6 +113,10 @@
         </ccTool>
       </folder>
       <item path="pclBox.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tools.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tools.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
