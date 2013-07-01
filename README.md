@@ -1,24 +1,37 @@
-1. Compiling
+# plugin-3dBoxScan
+## Compiling
 
-    1.1. Delete old files if exists:
-        rm -Rf CMakeFiles
-        rm CMakeCache.txt
-        rm cmake_install.cmake
-        rm Makefile
-        rm pclBox
+* Delete old files if exists:
 
-    1.2. Generate Makefile:
-        cmake .
+```bash
+rm -Rf CMakeFiles
+rm CMakeCache.txt
+rm cmake_install.cmake
+rm Makefile
+rm pclBox
+```
 
-    1.3. Compiling:
-        make
+* Generate Makefile:
 
-2. Running
+```bash
+cmake .
+```
 
-    2.1. Running:
-        ./pclBox
+* Compiling:
 
-    2.2. Operate:
-        Clean desk;
-        Press "b" and wait until program save background (about 20 seconds);
-        Put the box on desk.
+```bash
+make
+```
+
+## Running
+
+* Running:
+
+```bash
+./pclBox
+````
+
+## Operate:
+* Clean desk;
+* Press "b" and wait until program save background (about 20 seconds);
+* Put the box on desk.
