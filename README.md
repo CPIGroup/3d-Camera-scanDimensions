@@ -1,7 +1,6 @@
-# plugin-3dBoxScan
 ## Compiling
 
-* Delete old files if exists:
+#### Delete old files if exists:
 
 ```bash
 rm -Rf CMakeFiles
@@ -11,13 +10,21 @@ rm Makefile
 rm pclBox
 ```
 
-* Generate Makefile:
+#### Generate Makefile:
 
 ```bash
 cmake .
 ```
 
-* Compiling:
+#### Config JSON
+
+add following line in config.h for JSON output, and pclBox will add current box dimension in to boxDimenstions.json.
+```cpp
+#define OUTPUTJSONFILE      "./boxDimenstions.json"
+```
+
+
+#### Compiling:
 
 ```bash
 make
@@ -25,13 +32,13 @@ make
 
 ## Running
 
-* Running:
+#### Running:
 
 ```bash
 ./pclBox
 ````
 
-## Operate:
+#### Operate:
 * Clean desk;
 * Press "b" and wait until program save background (about 20 seconds);
 * Put the box on desk.
