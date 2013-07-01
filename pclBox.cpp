@@ -11,6 +11,10 @@
 #include "config.h"
 #include "tools.h"
 
+#ifdef OUTPUTJSONFILE
+#include <fstream>
+#endif
+
 class box {
 private:
 
@@ -283,10 +287,31 @@ public:
 
         }
 
+#ifdef OUTPUTSCREEN
         std::cout << "BOX: " << box[0] << "x" << box[1] << "x" << box[2]
                 << " Side1: " << s[0][0] << "x" << s[0][1] << ", "
                 << " Side2: " << s[1][0] << "x" << s[1][1] << ", "
                 << " Side3: " << s[2][0] << "x" << s[2][1] << std::endl;
+#endif	/* OUTPUTSCREEN */
+
+#ifdef OUTPUTJSONFILE
+        	
+        // example: {"box":[7,5,4],"str":"7x5x4","sides":[[7,4],[7,5],[5,4]]} 
+        
+        std::ofstream jout(OUTPUTJSONFILE);
+        jout << "{" 
+                << "\"box\":[" << box[0] << "," << box[1] << "," << box[2] << "],"
+                << "\"str\":\"" << box[0] << "x" << box[1] << "x" << box[2] << "\","
+                << "\"sides\":["
+                    << "[" << s[0][0] << "," << s[0][1] << "],"
+                    << "[" << s[1][0] << "," << s[1][1] << "],"
+                    << "[" << s[2][0] << "," << s[2][1] << "]"
+                << "]"
+                << "}" << std::endl;
+        
+
+        jout.close();
+#endif	/* OUTPUTJSONFILE */
 
     }
 
@@ -433,7 +458,7 @@ public:
         } else {
 
             // splash
-            
+
             copyCloud(cloud_near, cloud_visual, RGBCOLOR_GRAY);
 
         }

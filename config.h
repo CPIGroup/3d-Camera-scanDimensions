@@ -1,6 +1,10 @@
 #ifndef CONFIG_H
 #define	CONFIG_H
 
+// output
+#define OUTPUTSCREEN        1
+#define OUTPUTJSONFILE      "./boxDimenstions.json"
+
 // constants
 #define METERSTOINCH        39.37
 
