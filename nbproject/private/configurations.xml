@@ -15,11 +15,10 @@
         </df>
         <df name="pclBox.dir">
         </df>
-        <df name="Progress">
-        </df>
         <in>tools.cpp</in>
         <in>tools.h</in>
       </df>
+      <in>config.h</in>
       <in>pclBox.cpp</in>
       <in>tools.cpp</in>
       <in>tools.h</in>

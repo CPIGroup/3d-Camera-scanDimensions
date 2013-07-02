@@ -13,6 +13,7 @@
     rm cmake_install.cmake
     rm Makefile
     rm pclBox
+    rm boxDimenstions.json
 
 #### Generate Makefile:
 
