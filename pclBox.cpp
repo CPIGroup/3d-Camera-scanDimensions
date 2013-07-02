@@ -11,9 +11,14 @@
 #include "config.h"
 #include "tools.h"
 
+#ifndef OUTPUTJSONCOUNT
+#define OUTPUTJSONCOUNT 1
+#endif /* OUTPUTJSONCOUNT */
+
 #ifdef OUTPUTJSONFILE
 #include <fstream>
-#endif
+char JSONBUFF[OUTPUTJSONCOUNT][1024];
+#endif /* OUTPUTJSONFILE */
 
 class box {
 private:
@@ -235,8 +240,8 @@ public:
         float s[3][2];
         for (int t = 0; t < 3; t++) {
             box[t] = 0.0f;
-            s[t][0] = round(side[t][0]);
-            s[t][1] = round(side[t][1]);
+            s[t][0] = round(side[t][0]*100)/100;
+            s[t][1] = round(side[t][1]*100)/100;
         }
 
         if (s[0][0] == 0 || s[0][1] == 0 || s[1][0] == 0 || s[1][1] == 0) {
@@ -253,15 +258,16 @@ public:
                     float ba = s[1][b];
                     float bb = (b == 0 ? s[1][1] : s[1][0]);
 
-                    if (aa == ba) {
+                    if (aa > ba - SIDECOMPAREINCH && aa < ba + SIDECOMPAREINCH) {
                         for (int c = 0; c < 2; c++) {
                             float ca = s[2][c];
                             float cb = (c == 0 ? s[2][1] : s[2][0]);
 
-                            if (bb == ca && cb == ab) {
-                                box[0] = aa; // ba
-                                box[1] = bb; // ca
-                                box[2] = cb; // ab
+                            if ((bb > ca - SIDECOMPAREINCH && bb < ca + SIDECOMPAREINCH) 
+                                    && (cb > ab - SIDECOMPAREINCH && cb < ab + SIDECOMPAREINCH)) {
+                                box[0] = (aa + ba) / 2;
+                                box[1] = (bb + ca) / 2;
+                                box[2] = (cb + ab) / 2;
                             }
                         }
                     }
@@ -277,8 +283,8 @@ public:
                     float ba = s[1][b];
                     float bb = (b == 0 ? s[1][1] : s[1][0]);
 
-                    if (aa == ba) {
-                        box[0] = aa; // ba
+                    if (aa > ba - SIDECOMPAREINCH && aa < ba + SIDECOMPAREINCH) {
+                        box[0] = (aa + ba) / 2;
                         box[1] = ab;
                         box[2] = bb;
                     }
@@ -288,29 +294,42 @@ public:
         }
 
 #ifdef OUTPUTSCREEN
-        std::cout << "BOX: " << box[0] << "x" << box[1] << "x" << box[2]
-                << " Side1: " << s[0][0] << "x" << s[0][1] << ", "
-                << " Side2: " << s[1][0] << "x" << s[1][1] << ", "
+        
+        std::cout << "BOX: " << round(box[0]) << "x" << round(box[1]) << "x" << round(box[2]) << " "
+                << " RAWBOX: " << box[0] << "x" << box[1] << "x" << box[2] << " "
+                << " Side1: " << s[0][0] << "x" << s[0][1] << ","
+                << " Side2: " << s[1][0] << "x" << s[1][1] << ","
                 << " Side3: " << s[2][0] << "x" << s[2][1] << std::endl;
+        
 #endif	/* OUTPUTSCREEN */
 
 #ifdef OUTPUTJSONFILE
-        	
-        // example: {"box":[7,5,4],"str":"7x5x4","sides":[[7,4],[7,5],[5,4]]} 
+
+        struct timeval tv;
+        gettimeofday(&tv, NULL);
+
+        for (int i=0; i<OUTPUTJSONCOUNT-1; i++) {
+            std::strcpy(JSONBUFF[i], JSONBUFF[i+1]);
+        }
+        
+        sprintf (JSONBUFF[OUTPUTJSONCOUNT-1], 
+            "{\"timestamp\":%Lf,\"box\":[%d,%d,%d],\"str\":\"%dx%dx%d\",\"raw\":[%.2f,%.2f,%.2f],\"sides\":[[%.2f,%.2f],[%.2f,%.2f],[%.2f,%.2f]]}",
+            ((long double)tv.tv_sec + ( (long double)tv.tv_usec / 1000000 )),
+            (int)round(box[0]), (int)round(box[1]), (int)round(box[2]),
+            (int)round(box[0]), (int)round(box[1]), (int)round(box[2]),
+            box[0], box[1], box[2],
+            s[0][0], s[0][1],
+            s[1][0], s[1][1],
+            s[2][0], s[2][1]);
         
         std::ofstream jout(OUTPUTJSONFILE);
-        jout << "{" 
-                << "\"box\":[" << box[0] << "," << box[1] << "," << box[2] << "],"
-                << "\"str\":\"" << box[0] << "x" << box[1] << "x" << box[2] << "\","
-                << "\"sides\":["
-                    << "[" << s[0][0] << "," << s[0][1] << "],"
-                    << "[" << s[1][0] << "," << s[1][1] << "],"
-                    << "[" << s[2][0] << "," << s[2][1] << "]"
-                << "]"
-                << "}" << std::endl;
         
-
+        for (int i=0; i<OUTPUTJSONCOUNT; i++) {
+            jout << JSONBUFF[i] << std::endl;
+        }
+        
         jout.close();
+        
 #endif	/* OUTPUTJSONFILE */
 
     }

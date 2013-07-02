@@ -4,6 +4,9 @@
 // output
 #define OUTPUTSCREEN        1
 #define OUTPUTJSONFILE      "./boxDimenstions.json"
+#define OUTPUTJSONCOUNT     10          // how many records keep in JSON file
+
+#define SIDECOMPAREINCH     0.5f
 
 // constants
 #define METERSTOINCH        39.37
