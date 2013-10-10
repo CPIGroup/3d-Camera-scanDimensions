@@ -1,6 +1,6 @@
 ## Description
 
-The purpose of this project is to use off the shelf commerical 3d cameras in determining a box's dimensions quickly and within a reasonable amount of accuracy.  The initial use cases revolve around warehouse operations.
+The purpose of this project is to use off the shelf commercial 3d cameras in determining a box's dimensions quickly and within a reasonable amount of accuracy.  The initial use cases revolve around warehouse operations.
 
 ### Use Cases include
 * Obtaining accurate shipping dimensions of parcels
