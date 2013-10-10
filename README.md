@@ -13,4 +13,4 @@ The purpose of this project is to use off the shelf commerical 3d cameras in det
 * PrimeSense Sensor Module for OpenNI ver. 5.1 or up, [primesense.com](http://primesense.com)
 * Pcl library ver. 1.7 or up, [pointclouds.org](http://pointclouds.org)
 
-Install instructions [INSTALL.md](HERE)
+Install instructions [HERE](INSTALL.md)
